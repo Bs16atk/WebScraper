@@ -1,4 +1,4 @@
-#importing a load of libraries......
+#importing a load of libraries.
 from urllib.request import urlopen, urlparse, urljoin
 import re
 import requests
