@@ -6,7 +6,6 @@ from collections import Counter
 from string import punctuation
 from bs4 import BeautifulSoup
 import json
-
 #Task1
 print("Scraping Index Page")
 html = urlopen('https://www.cfcunderwriting.com/en-gb/')
@@ -40,22 +39,28 @@ for item in items:
         continue
     else:
         items.remove(item)
+
 #Writing results to rescources.json
 with open('resources.json', 'w', encoding='utf-8') as write_file:
  output = json.dumps(items, indent=2)
  write_file.write(output)
  print("\nWrote to resources.json")
 
+
 #Task 3 to find the privacy policy by enumerating through the links in the page
+
 for x in morelinks:
     if "privacy" in str(x):
         privlink = str(x)
         print("\nThe Privacy Policy can be found at: " + str(x))
-    
+
+  
 #Task 4 to scrape the privacy policy page and perform a word frequency count
+
 print("\nScraping Privacy Policy")
 r = requests.get("https://www.cfcunderwriting.com/en-gb/support/privacy-policy/")
 bs1 = BeautifulSoup(r.content, 'html.parser')
+
 #getting text from paragraphs
 text_p = (''.join(bs1.findAll(text=True))for thing in bs1.findAll('p'))
 c_p = Counter((x.rstrip(punctuation).lower() for y in text_p for x in y.split()))
