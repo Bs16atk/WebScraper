@@ -28,7 +28,7 @@ for script in scripts:
     items.append(str(record))
 
 for link in links: 
-    record = {"Link":link}
+    record = {"Links or Fonts":link}
     items.append(str(record))
 #Trying to only show external resources, this mostly worked
 a = 'https://'
