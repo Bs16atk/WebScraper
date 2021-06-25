@@ -40,6 +40,11 @@ for item in items:
         continue
     else:
         items.remove(item)
+#Writing results to rescources.json
+with open('resources.json', 'w', encoding='utf-8') as write_file:
+ output = json.dumps(items, indent=2)
+ write_file.write(output)
+ print("\nWrote to resources.json")
 
 #Task 3 to find the privacy policy by enumerating through the links in the page
 for x in morelinks:
@@ -65,9 +70,9 @@ words = total.most_common(1000)
 #reformatting the word frequency count to what I think is more like JSON
 words1 = json.dumps(dict(words), indent=2)
 
-#writing all results to results.json
-with open('results.json', 'w', encoding='utf-8') as write_file:
+#writing the new results to wordfrequencycount.json
+with open('wordfrequencycount.json', 'w', encoding='utf-8') as write_file:
  output = json.dumps(items, indent=2)
- write_file.write(output + words1)
+ write_file.write(words1)
 
-print("\nWrote to results.json")
+print("\nWrote to wordfrequencycount.json")
