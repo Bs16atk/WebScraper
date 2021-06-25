@@ -10,6 +10,7 @@ bs = BeautifulSoup(html, 'html.parser')
 images = bs.find_all('div',class_='img')
 scripts = bs.find_all('script')
 links = bs.find_all('link')
+morelinks = bs.find_all('a', href=True)
 
 items = []
 for image in images: 
@@ -35,9 +36,9 @@ with open('results.json', 'w', encoding='utf-8') as write_file:
  output = json.dumps(items, indent=2)
  write_file.write(output)
 
-b = 'privacy'
-for link in links:
-    if b in link:
-        print(link)
+#Task 2
+for x in morelinks:
+    if "privacy" in str(x):
+        print("The Privacy Policy can be found at: " + str(x))
     
     
