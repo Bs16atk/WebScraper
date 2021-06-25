@@ -51,10 +51,11 @@ for x in morelinks:
 print("\nScraping Privacy Policy")
 r = requests.get("https://www.cfcunderwriting.com/en-gb/support/privacy-policy/")
 bs1 = BeautifulSoup(r.content, 'html.parser')
-
+#getting text from paragraphs
 text_p = (''.join(bs1.findAll(text=True))for thing in bs1.findAll('p'))
 c_p = Counter((x.rstrip(punctuation).lower() for y in text_p for x in y.split()))
 
+#getting text from divs
 text_div = (''.join(bs1.findAll(text=True))for thing in bs1.findAll('div'))
 c_div = Counter((x.rstrip(punctuation).lower() for y in text_div for x in y.split()))
 
